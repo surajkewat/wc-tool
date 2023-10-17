@@ -17,13 +17,13 @@ func printCountOf(countOf string, filePath string) {
 
 	scanner := bufio.NewScanner(file)
 	if countOf == "bytes" {
-		scanner.Split(bufio.ScanRunes)
+		scanner.Split(bufio.ScanBytes)
 	} else if countOf == "lines" {
 		scanner.Split(bufio.ScanLines)
 	} else if countOf == "words" {
 		scanner.Split(bufio.ScanWords)
 	} else if countOf == "characters" {
-		scanner.Split(bufio.ScanBytes)
+		scanner.Split(bufio.ScanRunes)
 	} else {
 
 	}
@@ -52,7 +52,6 @@ func main() {
 		numberOfBytes = true
 		numberOfLines = true
 		numberOfWords = true
-		numberOfCharacters = true
 	}
 
 	if flag.NArg() == 0 {
@@ -68,10 +67,10 @@ func main() {
 	if numberOfWords {
 		printCountOf("words", secondParameter)
 	}
-	if numberOfCharacters {
+	if numberOfBytes {
 		printCountOf("bytes", secondParameter)
 	}
-	if numberOfBytes {
+	if numberOfCharacters {
 		printCountOf("characters", secondParameter)
 	}
 }
